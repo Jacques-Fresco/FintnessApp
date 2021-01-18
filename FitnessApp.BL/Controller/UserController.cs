@@ -53,11 +53,7 @@ namespace FitnessApp.BL.Controller
 
             using (FileStream fs = new FileStream("users.dat", FileMode.OpenOrCreate))
             {
-                if (fs.Length == 0)
-                {
-                    return new List<User>();
-                }
-                else if (formatter.Deserialize(fs) is List<User> users)
+                if (fs.Length > 0 && formatter.Deserialize(fs) is List<User> users)
                 {
                     return users;
                 }
@@ -82,7 +78,7 @@ namespace FitnessApp.BL.Controller
         /// <summary>
         /// Сохранить данные пользователя.
         /// </summary>
-        private void Save()
+        public void Save()
         {
             BinaryFormatter formatter = new BinaryFormatter();
 

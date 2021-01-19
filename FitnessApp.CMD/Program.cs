@@ -1,5 +1,7 @@
 ﻿using FitnessApp.BL.Controller;
+using FitnessApp.BL.Model;
 using System;
+using System.Collections.Generic;
 
 namespace FitnessApp.CMD
 {
@@ -13,6 +15,7 @@ namespace FitnessApp.CMD
             string name = Console.ReadLine();
 
             UserController userController = new UserController(name);
+            EatingController eatingController = new EatingController(userController.CurrentUser);
 
             if(userController.IsNewUser)
             {
@@ -22,11 +25,47 @@ namespace FitnessApp.CMD
                 double weight = ParseDouble("вес");
                 double height = ParseDouble("рост");
 
-                userController.SetNewUserData(gender, bithDate, weight, height);
+                userController.SetNewUserData(gender, 
+                                              bithDate, 
+                                              weight, 
+                                              height);
             }
 
             Console.WriteLine(userController.CurrentUser);
-            Console.ReadLine();
+
+            Console.WriteLine("Что вы хотите сделать?");
+            Console.WriteLine("E - ввести прием пищи");
+            ConsoleKeyInfo key = Console.ReadKey();
+
+            if(key.Key == ConsoleKey.E)
+            {
+                (Food Food, double Weight) foods = EnterEating(); 
+                eatingController.Add(foods.Food, foods.Weight);
+
+                foreach(KeyValuePair<FitnessApp.BL.Model.Food, double> item in eatingController.Eating.Foods)
+                {
+                    Console.WriteLine($"\t{item.Key} - {item.Value}");
+                }
+            }
+
+            Console.ReadLine(); 
+        }
+
+        private static (Food Food, double Weight) EnterEating()
+        {
+
+            Console.Write("\nВведите имя продукта: ");
+            string food = Console.ReadLine();
+
+            double calories = ParseDouble("калорийность");
+            double prots = ParseDouble("белки");
+            double fats = ParseDouble("жиры");
+            double carbs = ParseDouble("углеводы");
+
+            double weight = ParseDouble("вес порции");
+            Food product = new Food(food, calories, prots, fats, carbs);
+
+            return (product, weight);
         }
 
         private static DateTime ParseDateTime()
@@ -59,7 +98,7 @@ namespace FitnessApp.CMD
                 }
                 else
                 {
-                    Console.WriteLine($"Неверный формат {name}a. Попробуйте снова.");
+                    Console.WriteLine($"Неверный формат поля {name}. Попробуйте снова.");
                 }
             }
         }

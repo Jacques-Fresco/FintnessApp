@@ -10,8 +10,10 @@ namespace FitnessApp.BL.Controller
     /// <summary>
     /// Контроллер пользователя.
     /// </summary>
-    public class UserController
+    public class UserController : ControllerBase
     {
+        private const string USERS_FILE_NAME = "users.dat";
+
         /// <summary>
         /// Пользователь приложения.  
         /// </summary>
@@ -43,26 +45,6 @@ namespace FitnessApp.BL.Controller
                 Save();
             }    
         }
-        /// <summary>
-        /// Получить сохраненный список пользователей.
-        /// </summary>
-        /// <returns>Пользователь приложения.</returns>
-        private List<User> GetUsersData()
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-
-            using (FileStream fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-                if (fs.Length > 0 && formatter.Deserialize(fs) is List<User> users)
-                {
-                    return users;
-                }
-                else
-                {
-                    return new List<User>();
-                }
-            }
-        }
 
         public void SetNewUserData(string genderName, DateTime birthDate, double weight = 1, double height = 1)
         {
@@ -76,16 +58,20 @@ namespace FitnessApp.BL.Controller
         }
 
         /// <summary>
+        /// Получить сохраненный список пользователей.
+        /// </summary>
+        /// <returns>Пользователь приложения.</returns>
+        private List<User> GetUsersData()
+        {
+            return base.Load<List<User>>(USERS_FILE_NAME) ?? new List<User>();
+        }
+
+        /// <summary>
         /// Сохранить данные пользователя.
         /// </summary>
         public void Save()
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-
-            using (FileStream fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-                formatter.Serialize(fs, Users);
-            }
+            Save(USERS_FILE_NAME, Users);
         }
     }
 }

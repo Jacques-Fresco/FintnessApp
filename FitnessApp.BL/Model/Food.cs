@@ -5,24 +5,25 @@ namespace FitnessApp.BL.Model
     [Serializable]
     public class Food
     {
-        public string Name { get; }
+        public int Id { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Белки
         /// </summary>
-        public double Proteins { get; }
+        public double Proteins { get; set; }
         /// <summary>
         /// Жиры
         /// </summary>
-        public double Fats { get; }
+        public double Fats { get; set; }
         /// <summary>
         /// Углеводы
         /// </summary>
-        public double Carbohydrates { get; } 
+        public double Carbohydrates { get; set; } 
         /// <summary>
         /// Калории за 100 гр. продукта
         /// </summary>
-        public double Calories { get; }
+        public double Calories { get; set; }
 
         /*private double ProteonsOneGramm { get { return Proteins / 100.0; } }
         private double FatsOneGramm { get { return Fats / 100.0; } }

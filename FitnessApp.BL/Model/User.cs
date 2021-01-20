@@ -9,10 +9,11 @@ namespace FitnessApp.BL.Model
     public class User
     {
         #region Propertis
+        public int Id { get; set; }
         /// <summary>
         /// Имя.
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
         /// <summary>
         /// Пол.
         /// </summary>

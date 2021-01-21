@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FitnessApp.BL.Model
 {
@@ -29,7 +30,8 @@ namespace FitnessApp.BL.Model
         private double FatsOneGramm { get { return Fats / 100.0; } }
         private double CarbohydratesOneGramm { get { return Carbohydrates / 100.0; } }
         private double CalloriesOneGram { get { return Calories / 100.0; } }*/
-
+        public virtual ICollection<Eating> Eatings { get; set; }
+        public Food() { }
         public Food(string name) : this(name, 0, 0, 0, 0) { }
         public Food(string name, 
                     double callories, 

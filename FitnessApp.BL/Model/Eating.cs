@@ -15,6 +15,7 @@ namespace FitnessApp.BL.Model
         public Dictionary<Food, double> Foods { get; set; }
         public int UserId { get; set; }
         public virtual User User { get; set; }
+        public Eating() { }
         public Eating(User user)
         {
             User = user ?? throw new ArgumentNullException("Пользователь не может быть пустым.", nameof(user));

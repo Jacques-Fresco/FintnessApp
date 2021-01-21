@@ -5,14 +5,15 @@ namespace FitnessApp.BL.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<FitnessApp.BL.Controller.FitnessContex>
+    internal sealed class Configuration : DbMigrationsConfiguration<FitnessApp.BL.Controller.FitnessContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            ContextKey = "FitnessApp.BL.Controller.FitnessContext";
         }
 
-        protected override void Seed(FitnessApp.BL.Controller.FitnessContex context)
+        protected override void Seed(FitnessApp.BL.Controller.FitnessContext context)
         {
             //  This method will be called after migrating to the latest version.
 

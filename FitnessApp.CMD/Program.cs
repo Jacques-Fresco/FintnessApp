@@ -9,10 +9,10 @@ namespace FitnessApp.CMD
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
                                  //CurrentCulture; // системная культура пользователя 
-            CultureInfo culture = CultureInfo.CreateSpecificCulture("en-us"); // выбрать локализацию самостоятельно
+            CultureInfo culture = CultureInfo.CreateSpecificCulture("ru-ru"); // выбрать локализацию самостоятельно
             ResourceManager resourceManager = new ResourceManager("FitnessApp.CMD.Languages.Messages", typeof(Program).Assembly);
 
             Console.WriteLine(resourceManager.GetString("Hello", culture));

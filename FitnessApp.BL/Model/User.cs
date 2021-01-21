@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FitnessApp.BL.Model
 {
@@ -17,6 +18,7 @@ namespace FitnessApp.BL.Model
         /// <summary>
         /// Пол.
         /// </summary>
+        public int? GenderId { get; set; }
         public Gender Gender { get; set; }
         /// <summary>
         /// Дата рождения.
@@ -30,6 +32,8 @@ namespace FitnessApp.BL.Model
         /// Рост.
         /// </summary>
         public double Height { get; set; }
+        public virtual ICollection<Exercise> Exercises { get; set; }
+        public virtual ICollection<Eating> Eatings { get; set; }
 
         public int Age 
         { 
@@ -41,7 +45,7 @@ namespace FitnessApp.BL.Model
             } 
         }
         #endregion
-
+        public User() { }
         /// <summary>
         /// Создать нового пользователя.
         /// </summary>
@@ -61,11 +65,8 @@ namespace FitnessApp.BL.Model
             {
                 throw new ArgumentNullException("Имя пользователя не может быть пустым или null.", nameof(name));
             }
-            if(gender == null)
-            {
-                throw new ArgumentNullException("Пол не может быть null.", nameof(gender));
-            }
-            if(birthDate < DateTime.Parse("01.01.1900") || birthDate >= DateTime.Now)
+
+            if (birthDate < DateTime.Parse("01.01.1900") || birthDate >= DateTime.Now)
             {
                 throw new ArgumentException("Невозможная дата рождения.", nameof(birthDate));
             }
@@ -79,7 +80,7 @@ namespace FitnessApp.BL.Model
             }
             #endregion
             Name = name;
-            Gender = gender;
+            Gender = gender ?? throw new ArgumentNullException("Пол не может быть null.", nameof(gender));
             BirthDate = birthDate;
             Weight = weight;
             Height = height;

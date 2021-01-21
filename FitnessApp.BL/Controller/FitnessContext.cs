@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
 using FitnessApp.BL.Model;
 
 namespace FitnessApp.BL.Controller
 {
-    class FitnessContex : DbContext
+    public class FitnessContext : DbContext
     {
-        public FitnessContex() : base("DBConnetion") { }
+        public FitnessContext() : base("DBConnetion") { }
         public DbSet<Activity> Activities { get; set; }
         public DbSet<Eating> Eatings { get; set; }
         public DbSet<Exercise> Exercises { get; set; }

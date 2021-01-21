@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessApp.CMD", "FitnessAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessApp.BLTests", "FitnessApp.BLTests\FitnessApp.BLTests.csproj", "{43E66D7B-1AF8-4295-A498-F8BB83178D70}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{F4BBB773-BAFD-4592-A778-BF585DB54E59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,8 @@ Global
 		{43E66D7B-1AF8-4295-A498-F8BB83178D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43E66D7B-1AF8-4295-A498-F8BB83178D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43E66D7B-1AF8-4295-A498-F8BB83178D70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4BBB773-BAFD-4592-A778-BF585DB54E59}.Debug|Any CPU.ActiveCfg = Debug
+		{F4BBB773-BAFD-4592-A778-BF585DB54E59}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

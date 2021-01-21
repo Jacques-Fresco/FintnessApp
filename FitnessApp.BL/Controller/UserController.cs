@@ -41,7 +41,11 @@ namespace FitnessApp.BL.Controller
                 CurrentUser = new User(userName);
                 Users.Add(CurrentUser);
                 IsNewUser = true; // помечаем, что пользователь новый
-            }    
+            }
+            else
+            {
+                Console.WriteLine(CurrentUser);
+            }
         }
 
         public void SetNewUserData(string genderName, DateTime birthDate, double weight = 1, double height = 1)
